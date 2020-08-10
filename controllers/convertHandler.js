@@ -14,8 +14,9 @@ function ConvertHandler() {
   };
 
   this.getUnit = function (input) {
-    let result;
-
+    let regex = /[a-zA-Z]+/gm;
+    let result = input.match(regex)[0];
+    if(!!result) result = result.toLowerCase();
     return result;
   };
 
