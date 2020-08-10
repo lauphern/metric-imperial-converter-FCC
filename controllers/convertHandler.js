@@ -1,28 +1,27 @@
 /*
-*
-*
-*       Complete the handler logic below
-*       
-*       
-*/
+ *
+ *
+ *       Complete the handler logic below
+ *
+ *
+ */
 
 function ConvertHandler() {
-  
-  this.getNum = function(input) {
+  this.getNum = function (input) {
     let result;
-    
+
     return result;
   };
-  
-  this.getUnit = function(input) {
+
+  this.getUnit = function (input) {
     let result;
-    
+
     return result;
   };
-  
-  this.getReturnUnit = function(initUnit) {
+
+  this.getReturnUnit = function (initUnit) {
     let result;
-    switch(initUnit) {
+    switch (initUnit) {
       case "gal":
         result = "L";
         break;
@@ -47,18 +46,18 @@ function ConvertHandler() {
     return result;
   };
 
-  this.spellOutUnit = function(unit) {
+  this.spellOutUnit = function (unit) {
     let result;
-    
+
     return result;
   };
-  
-  this.convert = function(initNum, initUnit) {
+
+  this.convert = function (initNum, initUnit) {
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     let result;
-    switch(initUnit) {
+    switch (initUnit) {
       case "gal":
         result = initNum * galToL;
         break;
@@ -82,13 +81,12 @@ function ConvertHandler() {
     }
     return result;
   };
-  
-  this.getString = function(initNum, initUnit, returnNum, returnUnit) {
+
+  this.getString = function (initNum, initUnit, returnNum, returnUnit) {
     let result;
-    
+    result = `${initNum} ${initUnit} converts to ${parseFloat(returnNum.toFixed(5))} ${returnUnit}`;
     return result;
   };
-  
 }
 
 module.exports = ConvertHandler;
