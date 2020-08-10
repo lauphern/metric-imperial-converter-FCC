@@ -36,8 +36,12 @@ function ConvertHandler() {
       }
     }
     //4. Integers
-    //Check that there are only numbers
-    if(input.match(generalRegex) !== input.match(numbersRegex)) return "invalid number";
+    //Check that there are only numbers, comparing the two arrays: we should get the same array with both regex
+    if(!input.match(generalRegex).every(val => input.match(numbersRegex).map(val2 => val === val2))) {
+      //The default is 1
+      result = 1;
+      return result
+    }
     else {
       result = lettersRemoved;
       return result;
@@ -111,6 +115,7 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     let result;
+    if(initNum === "invalid number") return "invalid number"
     switch (initUnit) {
       case "gal":
         result = initNum * galToL;
@@ -131,7 +136,7 @@ function ConvertHandler() {
         result = initNum / miToKm;
         break;
       default:
-        result = "invalid number";
+        result = "invalid unit";
     }
     return result;
   };
