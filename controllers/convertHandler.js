@@ -48,7 +48,7 @@ function ConvertHandler() {
 
   this.spellOutUnit = function (unit) {
     let result;
-    switch (initUnit) {
+    switch (unit) {
       case "gal":
         result = "gallons";
         break;
