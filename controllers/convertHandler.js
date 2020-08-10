@@ -53,6 +53,7 @@ function ConvertHandler() {
 
   this.getUnit = function (input) {
     let acceptedUnits = ["gal", "l", "lbs", "kg", "mi", "km"];
+    input = input.toLowerCase();
     let regex = /[a-zA-Z]+/gm;
     let result = input.match(regex)[0];
     if(acceptedUnits.includes(result)) return result.toLowerCase();
