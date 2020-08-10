@@ -53,10 +53,10 @@ suite('Functional Tests', function() {
         .query({input: '3/7.2/4kg'})
         .end(function(err, res){
           assert.equal(res.status, 400);
-          assert.equal(res.body.initNum, 32);
-          assert.equal(res.body.initUnit, 'invalid unit');
-          assert.equal(res.body.returnNum, 'invalid unit');
-          assert.equal(res.body.returnUnit, 'invalid unit');
+          assert.equal(res.body.initNum, 'invalid number');
+          assert.equal(res.body.initUnit, 'kg');
+          assert.equal(res.body.returnNum, 'invalid number');
+          assert.equal(res.body.returnUnit, 'lbs');
           done();
         });
       });  
@@ -69,7 +69,7 @@ suite('Functional Tests', function() {
           assert.equal(res.status, 400);
           assert.equal(res.body.initNum, 'invalid number');
           assert.equal(res.body.initUnit, 'invalid unit');
-          assert.equal(res.body.returnNum, 'invalid unit');
+          assert.equal(res.body.returnNum, 'invalid number');
           assert.equal(res.body.returnUnit, 'invalid unit');
           assert.equal(res.body.string, 'invalid number and unit');
           done();

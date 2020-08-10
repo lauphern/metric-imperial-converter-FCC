@@ -8,7 +8,6 @@
 
 function ConvertHandler() {
   this.getNum = function (input) {
-    debugger
     let result;
     let generalRegex = /[^a-zA-Z]+/gm;
     let slashRegex = /\/+/gm;
