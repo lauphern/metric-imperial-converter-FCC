@@ -24,9 +24,9 @@ function ConvertHandler() {
     let result;
     switch (initUnit) {
       case "gal":
-        result = "L";
+        result = "l";
         break;
-      case "L":
+      case "l":
         result = "gal";
         break;
       case "lbs":
@@ -53,7 +53,7 @@ function ConvertHandler() {
       case "gal":
         result = "gallons";
         break;
-      case "L":
+      case "l":
         result = "litres";
         break;
       case "lbs":
@@ -83,7 +83,7 @@ function ConvertHandler() {
       case "gal":
         result = initNum * galToL;
         break;
-      case "L":
+      case "l":
         result = initNum / galToL;
         break;
       case "lbs":
