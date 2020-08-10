@@ -22,7 +22,28 @@ function ConvertHandler() {
   
   this.getReturnUnit = function(initUnit) {
     let result;
-    
+    switch(initUnit) {
+      case "gal":
+        result = "L";
+        break;
+      case "L":
+        result = "gal";
+        break;
+      case "lbs":
+        result = "kg";
+        break;
+      case "kg":
+        result = "lbs";
+        break;
+      case "mi":
+        result = "km";
+        break;
+      case "km":
+        result = "mi";
+        break;
+      default:
+        result = "invalid unit";
+    }
     return result;
   };
 
