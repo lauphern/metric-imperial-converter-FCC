@@ -84,6 +84,9 @@ function ConvertHandler() {
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
     let result;
+    if(initNum === "invalid number" && initUnit === "invalid unit") return "invalid number and unit";
+    else if(initNum === "invalid number") return initNum;
+    else if(initUnit === "invalid unit") return initUnit;
     result = `${initNum} ${initUnit} converts to ${parseFloat(returnNum.toFixed(5))} ${returnUnit}`;
     return result;
   };
