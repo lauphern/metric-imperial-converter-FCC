@@ -77,6 +77,8 @@ function ConvertHandler() {
       case "km":
         result = initNum / miToKm;
         break;
+      default:
+        result = "invalid number";
     }
     return result;
   };
