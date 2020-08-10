@@ -108,7 +108,7 @@ function ConvertHandler() {
     if(initNum === "invalid number" && initUnit === "invalid unit") return "invalid number and unit";
     else if(initNum === "invalid number") return initNum;
     else if(initUnit === "invalid unit") return initUnit;
-    result = `${initNum} ${initUnit} converts to ${parseFloat(returnNum.toFixed(5))} ${returnUnit}`;
+    result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${parseFloat(returnNum.toFixed(5))} ${this.spellOutUnit(returnUnit)}`;
     return result;
   };
 }
