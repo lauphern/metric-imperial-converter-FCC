@@ -9,15 +9,47 @@
 function ConvertHandler() {
   this.getNum = function (input) {
     let result;
-
-    return result;
+    let generalRegex = /[^a-zA-Z]+/gm;
+    let slashRegex = /\/+/gm;
+    let dotRegex = /\.+/gm;
+    let numbersRegex = /[0-9]+/gm;
+    let lettersRemoved = input.match(generalRegex)[0];
+    //1. Check there are numbers
+    if(!lettersRemoved.match(numbersRegex)) return "invalid number";
+    //2. Check for fractions
+    let isItFraction = lettersRemoved.match(slashRegex);
+    if(!!isItFraction) {
+      if(isItFraction.length > 1) return "invalid number";
+      else {
+        let numbersArray = lettersRemoved.split("/");
+        result = parseFloat(numbersArray[0]) / parseFloat(numbersArray[1]);
+        return result;
+      }
+    }
+    //3. Check for floats
+    let isItFloat = lettersRemoved.match(dotRegex);
+    if(!!isItFloat) {
+      if(isItFloat.length > 1) return "invalid number";
+      else {
+        result = parseFloat(lettersRemoved);
+        return result;
+      }
+    }
+    //4. Integers
+    //Check that there are only numbers
+    if(input.match(generalRegex) !== input.match(numbersRegex)) return "invalid number";
+    else {
+      result = lettersRemoved;
+      return result;
+    }
   };
 
   this.getUnit = function (input) {
+    let acceptedUnits = ["gal", "l", "lbs", "kg", "mi", "km"];
     let regex = /[a-zA-Z]+/gm;
     let result = input.match(regex)[0];
-    if(!!result) result = result.toLowerCase();
-    return result;
+    if(acceptedUnits.includes(result)) return result.toLowerCase();
+    else return "invalid unit";
   };
 
   this.getReturnUnit = function (initUnit) {
