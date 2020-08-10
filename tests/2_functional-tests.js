@@ -20,6 +20,7 @@ suite('Functional Tests', function() {
     suite('GET /api/convert => conversion object', function() {
       
       test('Convert 10L (valid input)', function(done) {
+        //TODO revisar lo de la L
        chai.request(server)
         .get('/api/convert')
         .query({input: '10L'})

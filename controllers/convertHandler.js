@@ -8,34 +8,37 @@
 
 function ConvertHandler() {
   this.getNum = function (input) {
+    debugger
     let result;
     let generalRegex = /[^a-zA-Z]+/gm;
     let slashRegex = /\/+/gm;
     let dotRegex = /\.+/gm;
     let numbersRegex = /[0-9]+/gm;
-    let lettersRemoved = input.match(generalRegex)[0];
-    //1. Check there are numbers
-    if(!lettersRemoved.match(numbersRegex)) return "invalid number";
-    //2. Check for fractions
-    let isItFraction = lettersRemoved.match(slashRegex);
+    let lettersRemoved = input.match(generalRegex);
+    //1. If there is no match, the input only had the unit, so we should return the default value: 1
+    if(!lettersRemoved) return 1
+    //2. Check there are numbers
+    if(!lettersRemoved[0].match(numbersRegex)) return "invalid number";
+    //3. Check for fractions
+    let isItFraction = lettersRemoved[0].match(slashRegex);
     if(!!isItFraction) {
       if(isItFraction.length > 1) return "invalid number";
       else {
-        let numbersArray = lettersRemoved.split("/");
+        let numbersArray = lettersRemoved[0].split("/");
         result = parseFloat(numbersArray[0]) / parseFloat(numbersArray[1]);
         return result;
       }
     }
-    //3. Check for floats
-    let isItFloat = lettersRemoved.match(dotRegex);
+    //4. Check for floats
+    let isItFloat = lettersRemoved[0].match(dotRegex);
     if(!!isItFloat) {
       if(isItFloat.length > 1) return "invalid number";
       else {
-        result = parseFloat(lettersRemoved);
+        result = parseFloat(lettersRemoved[0]);
         return result;
       }
     }
-    //4. Integers
+    //5. Integers
     //Check that there are only numbers, comparing the two arrays: we should get the same array with both regex
     if(!input.match(generalRegex).every(val => input.match(numbersRegex).map(val2 => val === val2))) {
       //The default is 1
@@ -43,7 +46,7 @@ function ConvertHandler() {
       return result
     }
     else {
-      result = lettersRemoved;
+      result = lettersRemoved[0];
       return result;
     }
   };
